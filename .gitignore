@@ -1,0 +1,7 @@
+*
+!*/
+!*.cpp
+!*.txt
+!.vscode/settings.json
+!.gitignore
+test.cpp
