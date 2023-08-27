@@ -62,7 +62,7 @@ int Stack::stackTop() {
 
 void Stack::display() {
     for(int i = top; i >= 0; i--) {
-        cout << i << " - " << S[i] << endl;
+        cout << S[i] << endl;
     }
 }
 
