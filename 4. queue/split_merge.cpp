@@ -93,6 +93,7 @@ int main() {
     posQueue.display();
     
     cout << "negative queue: ";
+    
     negQueue.display();
 
     

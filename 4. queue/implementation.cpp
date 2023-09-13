@@ -53,8 +53,7 @@ public:
             cout << "Queue is empty" << endl;
             return -1; 
         }
-        front++;
-        return Q[front];
+        return Q[front++];
     }
 
     int last() {
