@@ -14,7 +14,7 @@ public:
         this->size=size;
         Q = new int[size];
     }
-    int enqueue(int x){
+    void enqueue(int x){
         if(isFull()){
             cout << "queue is full";
         }
@@ -63,7 +63,8 @@ public:
     void display() {
         if (isEmpty()) {
             cout << endl;
-        } else {
+        }
+        else {
             int i = front + 1;
             do {
                 cout << Q[i] << " ";
@@ -71,6 +72,9 @@ public:
             } while (i != (rear + 1) % size);
             cout << endl;
         }
+    }
+    ~Queue() {
+        delete[] Q;
     }
 };
 int main(){

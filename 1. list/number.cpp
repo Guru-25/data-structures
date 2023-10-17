@@ -9,11 +9,10 @@ class Number {
     int i;
 
     public:
-    Number(int initialList[], int size) {
+    Number(int initialList[], int size) : index(size - 1), i(0) {
         for (i = 0; i < size; i++) {
             list[i] = initialList[i];
         }
-        index = size - 1;
     }
 
     int sizeList() {
@@ -21,7 +20,7 @@ class Number {
     }
 
     void printList() {
-        for (i = 0; i <= index; i++) {
+        for (int i = 0; i <= index; i++) {
             cout << list[i] << " ";
         }
         cout << endl;
@@ -147,7 +146,7 @@ int main() {
             n.printList();
             break;
         case 8:
-            exit;
+            exit(0);
             break;
         default:
             cout << "Please enter a valid choice" << endl;

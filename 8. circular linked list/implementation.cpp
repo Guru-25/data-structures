@@ -17,8 +17,7 @@ public:
     }
 
     int length() {
-        Node* temp;
-        temp = head;
+        Node* temp = head;
         int len = 0;
         do {
             len++;
@@ -28,8 +27,7 @@ public:
     }
 
     void print() {
-        Node* temp;
-        temp = head;
+        Node* temp = head;
         do {
             cout << temp->item << " ";
             temp = temp->next;
@@ -38,8 +36,7 @@ public:
     }
 
     Node* search(int x) {
-        Node* temp;
-        temp = head;
+        Node* temp = head;
         do {
             if (x == temp->item) {
                 return temp;
@@ -50,48 +47,36 @@ public:
     }
 
     void insert(int x, int index) {
-        Node* temp;
-        temp = head;
-        Node* newnode;
+        Node* temp = head;
+        Node* newnode = new Node;
+        newnode->item = x;
+        newnode->next = head;
         if (head == NULL) {
-            newnode = new Node;
-            newnode->item = x;
             newnode->next = newnode;
             head = newnode;
         }
         else if (index == 0) {
-            newnode = new Node;
-            newnode->item = x;
-            newnode->next = head;
-            while (temp->next != head) {
-                temp = temp->next;
-            }
-            temp->next = newnode;
             head = newnode;
         }
         else {
-            for (int i = 0; i < index - 1; i++) {
+            for (int i = 1; i < index; i++) {
                 temp = temp->next;
             }
-            newnode = new Node;
-            newnode->item = x;
             newnode->next = temp->next;
             temp->next = newnode;
         }
     }
 
     void insertAfter(int x, int y) {
-        Node* temp;
-        temp = head;
+        Node* temp = head;
         Node* pos = search(y);
         if (pos == NULL) {
             cout << "not found" << endl;
             return;
         }
-        Node* newnode;
-        newnode = new Node;
+        Node* newnode = new Node;
         newnode->item = x;
-        newnode->next = NULL;
+        newnode->next = head;
         while (temp != pos) {
             temp = temp->next;
         }
@@ -100,24 +85,17 @@ public:
     }
 
     void insertBefore(int x, int y) {
-        Node* temp;
-        temp = head;
+        Node* temp = head;
         Node* pos = search(y);
         if (pos == NULL) {
             cout << "not found" << endl;
             return;
         }
-        Node* newnode;
-        newnode = new Node;
+        Node* newnode = new Node;
         newnode->item = x;
-        newnode->next = NULL;
+        newnode->next = head;
 
         if (pos == head) {
-            newnode->next = head;
-            while (temp->next != head) {
-                temp = temp->next;
-            }
-            temp->next = newnode;
             head = newnode;
         }
         else {
@@ -131,30 +109,17 @@ public:
 
     int deleteItem(int x) {
         int val;
-        Node* temp;
-        Node* temp1;
-        temp1 = NULL;
-        temp = head;
+        Node* temp = head;
+        Node* temp1 = NULL;
         Node* pos = search(x);
         if (pos == NULL) {
             cout << "not found" << endl;
             return -1;
         }
-        if (head == pos) {
+        if (pos == head) {
             val = head->item;
-            if (head->next == head) {
-                delete head;
-                head = NULL;
-                return val;
-            } else {
-                temp1 = head;
-                while (temp->next != head) {
-                    temp = temp->next;
-                }
-                temp->next = head->next;
-                head = head->next;
-                delete temp1;
-            }
+            head = head->next;
+            delete pos;
         }
         else {
             while (temp != pos) {

@@ -79,11 +79,16 @@ int isOperator(char x) {
 }
 
 int pre(char x) {
-    if(x == '+' || x=='-')
-        return 1;
-    else if(x== '*' || x=='/')
-        return 2;
-    return -1;
+    switch (x) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        default:
+            return -1;
+    }
 }
 
 int main() {
@@ -106,7 +111,9 @@ int main() {
                 i++;
             } else {
                 postfix[j]=stk.pop();
+                stk.push(infix[i]);
                 j++;
+                i++;
             }
         }
     }
@@ -123,7 +130,8 @@ int main() {
         if(!isOperator(postfix[j])) {
             stk.push(postfix[j] - '0');
             j++;
-        } else{
+        } 
+        else{
             y = stk.pop(); 
             x = stk.pop();
             switch(postfix[j]) {
@@ -144,6 +152,7 @@ int main() {
         }
     }
     cout << "ans: " << stk.stackTop() << endl;
+    delete[] postfix;
 
     return 0;
 }

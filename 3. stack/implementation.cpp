@@ -40,7 +40,7 @@ int Stack::pop() {
     } else {
         cout << "Stack Underflow" << endl;
     }
-    return x;
+    return x; 
 }
 
 int Stack::peek(int index) {
@@ -72,6 +72,10 @@ int Stack::isFull() {
 
 int Stack::isEmpty() {
     return top == -1;
+}
+
+Stack::~Stack() {
+    delete[] S;
 }
 
 int main() {

@@ -56,8 +56,9 @@ public:
 };
 
 int main() {
+    int n;
     DoublyLinkedList list;
-    int n,x;
+    int x;
     cout<<"enter n:";
     cin>>n;
     cout<<"enter: ";
@@ -66,9 +67,9 @@ int main() {
         list.insert(x);
     }
 
-    // list.insert(4);
-    // list.insert(1);
-    // list.insert(4);
+    list.insert(4);
+    list.insert(1);
+    list.insert(4);
     // list.insert(2);
     // list.insert(5);
     // list.insert(4);

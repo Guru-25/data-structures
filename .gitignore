@@ -2,6 +2,8 @@
 !*/
 !*.cpp
 !*.txt
+!*.png
+!*.py
 !.vscode/settings.json
 !.gitignore
 test.cpp

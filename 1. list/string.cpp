@@ -30,7 +30,7 @@ int search(Cricket c[], int n, string cap) {
 }
 
 void insert(Cricket c[], int n, int pos, string team, string captain) {
-        n++;
+        int index=size-1;
         for( int i = n; i >= pos; i--) {
             c[i + 1] = c[i];
         }

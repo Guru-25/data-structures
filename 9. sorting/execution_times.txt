@@ -1,0 +1,40 @@
+For n = 1000 :
+Bubble Sort: 8606 microseconds
+Insertion Sort: 2635 microseconds
+Selection Sort: 4854 microseconds
+Shell Sort: 368 microseconds
+Merge Sort: 322 microseconds
+Quick Sort: 244 microseconds
+
+For n = 2000 :
+Bubble Sort: 35819 microseconds
+Insertion Sort: 10051 microseconds
+Selection Sort: 14114 microseconds
+Shell Sort: 576 microseconds
+Merge Sort: 506 microseconds
+Quick Sort: 372 microseconds
+
+For n = 3000 :
+Bubble Sort: 60146 microseconds
+Insertion Sort: 16570 microseconds
+Selection Sort: 29877 microseconds
+Shell Sort: 965 microseconds
+Merge Sort: 737 microseconds
+Quick Sort: 603 microseconds
+
+For n = 4000 :
+Bubble Sort: 101864 microseconds
+Insertion Sort: 29696 microseconds
+Selection Sort: 52992 microseconds
+Shell Sort: 1360 microseconds
+Merge Sort: 1051 microseconds
+Quick Sort: 820 microseconds
+
+For n = 5000 :
+Bubble Sort: 173329 microseconds
+Insertion Sort: 47317 microseconds
+Selection Sort: 69674 microseconds
+Shell Sort: 1806 microseconds
+Merge Sort: 1362 microseconds
+Quick Sort: 1060 microseconds
+

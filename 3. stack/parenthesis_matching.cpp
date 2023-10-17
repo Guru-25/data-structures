@@ -48,6 +48,10 @@ int Stack::isEmpty() {
     return top == -1;
 }
 
+Stack::~Stack() {
+    delete[] S;
+}
+
 int main() {
     string exp;
     cout << "enter infix: ";
@@ -64,7 +68,7 @@ int main() {
                 break;
             }
             char topBracket = stk.pop();
-            if(exp[i] == ')' && topBracket != '(' || exp[i] == ']' && topBracket != '[' || exp[i] == '}' && topBracket != '{') {
+            if((exp[i] == ')' && topBracket != '(') || (exp[i] == ']' && topBracket != '[') || (exp[i] == '}' && topBracket != '{')) {
                 balanced = false;
                 break;
             }
