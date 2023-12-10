@@ -60,6 +60,5 @@ int main()
  cout << "Depth First Search: ";
  DFS(G,3,7);
  cout << endl;
-
  return 0;
 }

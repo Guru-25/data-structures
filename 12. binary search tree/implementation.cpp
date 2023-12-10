@@ -16,40 +16,85 @@ public:
 
     // Constructor to initialize an empty BST
     BST() {
-        root = nullptr;
+        root = NULL;
     }
 
-    // Function to create a new node
-    Node* createNode(int data) {
-        Node* newNode = new Node;
-        newNode->data = data;
-        newNode->left = newNode->right = nullptr;
-        return newNode;
+    Node* search(Node* p, int key) {
+        if(p==NULL){
+            return p;
+        }
+        if(key == p->data){
+            return p;
+        }
+        else if(key < p->data){
+            search(p->left,key);
+        }
+        else{
+            search(p->right,key);
+        }
+        return p;
     }
 
-    // Function to insert a node into the BST
-    Node* insert(Node* current, int data) {
-        if (current == nullptr)
-            return createNode(data);
+    Node* insert(Node* p, int key) {
+        Node* t;
+        if(p==NULL){
+            t=new Node;
+            t->data=key;
+            t->left=NULL;
+            t->right=NULL;
+            return t;
+        }
 
-        if (data < current->data)
-            current->left = insert(current->left, data);
-        else if (data > current->data)
-            current->right = insert(current->right, data);
+        if(key<p->data){
+            p->left=insert(p->left,key);
+        }
+        else if(key > p->data){
+            p->right=insert(p->right,key);
+        }
 
-        return current;
+        return p; // if key==data
     }
 
-    // Function to print the BST in inorder (ascending) order
-    void inorderTraversal(Node* current) {
-        if (current != nullptr) {
-            inorderTraversal(current->left);
-            cout << current->data << " ";
-            inorderTraversal(current->right);
+    void inorderTraversal(Node* p) {
+        if (p) {
+            inorderTraversal(p->left);
+            cout << p->data << " ";
+            inorderTraversal(p->right);
         }
     }
 
-    // Function to find the largest element in the BST
+    int findLargestInLeftSubtree(Node* p) {
+        if (p->right == NULL)
+            return p->data;
+        return findLargestInLeftSubtree(p->right);
+    }
+
+    Node* deleteNode(Node* p, int key) {
+        if (p == NULL)
+            return p;
+
+        if (key < p->data)
+            p->left = deleteNode(p->left, key);
+        else if (key > p->data)
+            p->right = deleteNode(p->right, key);
+        else {
+            if (p->left == NULL) {
+                Node* temp = p->right;
+                delete p;
+                return temp;
+            }
+            else if (p->right == NULL) {
+                Node* temp = p->left;
+                delete p;
+                return temp;
+            }
+
+            p->data = findLargestInLeftSubtree(p->left);
+            p->left = deleteNode(p->left, p->data);
+        }
+        return p;
+    }
+
     int findLargest(Node* current) {
         if (current == nullptr) {
             cout << "BST is empty" << endl;
@@ -71,13 +116,6 @@ public:
         return current->data;
     }
 
-    // Function to find the largest element in the left subtree
-    int findLargestInLeftSubtree(Node* current) {
-        if (current->right == nullptr)
-            return current->data;
-        return findLargestInLeftSubtree(current->right);
-    }
-
     // Function to find the smallest element in the right subtree
     int findSmallestInRightSubtree(Node* current) {
         if (current->left == nullptr)
@@ -85,41 +123,21 @@ public:
         return findSmallestInRightSubtree(current->left);
     }
 
-    // Function to search for an element in the BST
-    Node* search(Node* current, int key) {
-        if (current == nullptr || current->data == key)
-            return current;
-
-        if (key < current->data)
-            return search(current->left, key);
-        return search(current->right, key);
-    }
-
-    // Function to delete a node with a given data
-    Node* deleteNode(Node* current, int key) {
-        if (current == nullptr)
-            return current;
-
-        if (key < current->data)
-            current->left = deleteNode(current->left, key);
-        else if (key > current->data)
-            current->right = deleteNode(current->right, key);
-        else {
-            if (current->left == nullptr) {
-                Node* temp = current->right;
-                delete current;
-                return temp;
-            } else if (current->right == nullptr) {
-                Node* temp = current->left;
-                delete current;
-                return temp;
+    int rangesum(Node* p,int n1,int n2){
+        int x,y;
+        if(p){
+            x=rangesum(p->left,n1,n2);
+            y=rangesum(p->right,n1,n2);
+            if(p->data >=n1 && p->data<=n2){
+                return x+y+p->data;
             }
-
-            current->data = findLargestInLeftSubtree(current->left);
-            current->left = deleteNode(current->left, current->data);
+            else{
+                return x+y;
+            }
         }
-        return current;
+        return 0;
     }
+
 };
 
 int main() {

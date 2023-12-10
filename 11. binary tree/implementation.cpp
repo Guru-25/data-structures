@@ -49,15 +49,16 @@ public:
 };
 
 class Tree {
+public:
     Node* root;
 
-public:
     Tree() {
         root = NULL;
     }
 
     void CreateTree() {
-        Node* p, * t = NULL;
+        Node* p;
+        Node* t;
         int x;
         Queue q(100);
         cout << "enter root value: ";
@@ -89,10 +90,6 @@ public:
         }
     }
 
-    void Preorder() {
-        Preorder(root);
-    }
-
     void Preorder(Node* p) {
         if (p) {
             cout << p->data << " ";
@@ -101,20 +98,12 @@ public:
         }
     }
 
-    void Postorder() {
-        Postorder(root);
-    }
-
     void Postorder(Node* p) {
         if (p) {
             Postorder(p->lchild);
             Postorder(p->rchild);
             cout << p->data << " ";
         }
-    }
-
-    void Inorder() {
-        Inorder(root);
     }
 
     void Inorder(Node* p) {
@@ -152,13 +141,13 @@ int main() {
     t.CreateTree();
     cout << endl;
     cout << "Pre order: ";
-    t.Preorder();
+    t.Preorder(t.root);
     cout << endl;
     cout << "In order: ";
-    t.Inorder();
+    t.Inorder(t.root);
     cout << endl;
     cout << "Post order: ";
-    t.Postorder();
+    t.Postorder(t.root);
     cout << endl;
     return 0;
 }

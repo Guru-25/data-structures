@@ -130,7 +130,7 @@ int main() {
         if(!isOperator(postfix[j])) {
             stk.push(postfix[j] - '0');
             j++;
-        } 
+        }
         else{
             y = stk.pop(); 
             x = stk.pop();

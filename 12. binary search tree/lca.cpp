@@ -41,16 +41,16 @@ public:
     }
 
     // Function to find the LCA of two nodes in the BST
-    Node* findLCA(Node* current, int n1, int n2) {
-        if (current == nullptr)
+    Node* findLCA(Node* p, int n1, int n2) {
+        if (p == NULL)
             return nullptr;
 
-        if (n1 < current->data && n2 < current->data)
-            return findLCA(current->left, n1, n2);
-        else if (n1 > current->data && n2 > current->data)
-            return findLCA(current->right, n1, n2);
+        if (n1 < p->data && n2 < p->data)
+            return findLCA(p->left, n1, n2);
+        else if (n1 > p->data && n2 > p->data)
+            return findLCA(p->right, n1, n2);
 
-        return current;
+        return p;
     }
 
     // Function to print the BST in inorder (ascending) order
